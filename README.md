@@ -1,6 +1,6 @@
 # ModelCraft 🧠
 
-ModelForge is a personal ML training playground built for beginner-friendly experiments.
+ModelCraft is a personal ML training playground built for beginner-friendly experiments.
 > Not for public reuse or commercial use. Contact for permission.
 
 ## Features
