@@ -13,6 +13,9 @@ class linearregression:
     
     def evaluate(self,X,y):
         return self.model.score(X,y)
+        
+    def get_coefficients(self):
+        return self.model.coef_, self.model.intercept_
     
     def visualize(self,X,y):
         y_pred = self.predict(X)
@@ -27,3 +30,4 @@ class linearregression:
         plt.tight_layout()
         # plt.savefig("linear_regression_plot.png")  # For web app use
         # plt.close()
+
