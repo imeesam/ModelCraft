@@ -1,3 +1,7 @@
+fastapi
+uvicorn
+scikit-learn
 pandas
-sickit-learn
 numpy
+matplotlib
+python-multipart
