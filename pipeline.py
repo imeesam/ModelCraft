@@ -1,9 +1,12 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.feature_selection import mutual_info_classif
 from pandas.api.types import (
     is_object_dtype, is_categorical_dtype, is_string_dtype,
     is_bool_dtype, is_numeric_dtype, is_datetime64_any_dtype
 )
+
+target_column=0
 
 class Preprocessing:
     def __init__(self, data):
@@ -119,3 +122,35 @@ class Preprocessing:
                     self.data[[column]] = scaler.fit_transform(self.data[[column]])
                 except ValueError as e:
                     print(f"Skipping column '{column}' due to error: {e}")
+
+
+
+    def corr(self, target_column):
+        # Separate numerical and categorical columns (excluding target column)
+        num_cols = self.data.select_dtypes(include=['number']).columns.drop(target_column, errors='ignore')
+        cat_cols = self.data.select_dtypes(exclude=['number']).columns
+
+        scores = {}
+
+        # Correlation for numerical features
+        if len(num_cols) > 0:
+            correlation = self.data[num_cols].corrwith(self.data[target_column], numeric_only=True)
+            scores.update(correlation.abs().to_dict())
+
+        # Mutual Information for categorical features
+        if len(cat_cols) > 0:
+            mi_scores = mutual_info_classif(
+                self.data[cat_cols],
+                self.data[target_column],
+                discrete_features=True
+            )
+            scores.update(dict(zip(cat_cols, mi_scores)))
+
+        # Sort features by score (highest first) and exclude target column
+        sorted_features = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        top_features = [feature for feature, _ in sorted_features if feature != target_column][:6]
+
+        return top_features
+
+    
+

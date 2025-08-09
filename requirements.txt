@@ -1,4 +1,5 @@
-pandas
-sickit-learn
+fastapi
+uvicorn
+scikit-learn
 numpy
 matplotlib.pyplot
