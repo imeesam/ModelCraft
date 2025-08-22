@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.datasets import load_iris
-from pipeline import Preprocessing  # Your preprocessing class
+from backend.pipeline.pipeline import Preprocessing  # Your preprocessing class
 
 # Load iris dataset as a DataFrame
 iris = load_iris(as_frame=True)

@@ -4,16 +4,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import io
-from models.linear_regression import LinearRegressionModel
-from models.poly_regression import Polyregression
-from models.ridge_regression import RidgeRegressionModel
-from models.lasso_regression import LassoRegressionModel
-from models.logistic_regression import LogisticRegressionModel
-from models.knn_classifier import KNNClassifier
-from models.svm_classifier import SVMClassifier
-from models.decision_tree_classifier import DecisionTreeClassifierModel
-from models.kmeans import KMeansClustering
-from pipeline.preprocessing import Preprocessing
+from LinearRegression import linearregression
+from PolynomialRegression import Polyregression
+from RidgeRegrssion import RidgeRegressionModel
+from LassoRegression import LasooRegressionModel
+from Logisticregression import LogisticRegressionModel
+from KnnClassifier import KNNModel
+from SVM_Classifier import SVMModel
+from DecisionTreeClassifier import DecisionTreeClassifierModel
+from KMeans_cluster import KMeansClusteringModel
+from pipeline import Preprocessing
 
 app = FastAPI()
 
